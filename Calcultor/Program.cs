@@ -9,6 +9,7 @@ namespace Calcultor
             Console.WriteLine("Hello World!");
 
             //Hej freja
+            //går det godt?
         }
     }
 }
