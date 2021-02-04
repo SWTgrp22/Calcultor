@@ -27,5 +27,17 @@ namespace Calcultor
             return Math.Pow(x, exp);
         }
 
+        public double Divide(double a, double b)
+        {
+            if (b != 0) 
+            {
+                return a / b;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid number. Værdien b skal være forskellig fra 0");
+            }
+
+        }
     }
 }

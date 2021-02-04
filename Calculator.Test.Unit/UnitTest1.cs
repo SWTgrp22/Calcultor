@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Calculator.Test.Unit
@@ -77,5 +78,38 @@ namespace Calculator.Test.Unit
             Assert.That(sum, Is.EqualTo(result).Within(0.1));
 
         }
+
+        [TestCase(4, 4, 1)]
+        [TestCase(4, -1, -4)]
+        [TestCase(4, -4, -1)]
+        [TestCase(4.2, 4.3, 0.9767)]
+        public void Divide_aDevidedByb_ReturnsTheSum(double a, double b, double result)
+        {
+            //Arrange
+
+            //Act
+            double sum = uut.Divide(a,b);
+
+            //Assert
+            Assert.That(sum, Is.EqualTo(result).Within(0.0001));
+
+        }
+
+        [TestCase(4, 0)]
+        [TestCase(7, 0)]
+        [TestCase(4.2, 0)]
+        public void Divide_aDivedBy0_ThrowsAnArgumentException(double a, double b)
+        {
+            //Arrange
+
+            //Act
+            var ex = Assert.Throws<ArgumentException>(() => uut.Divide(a, b));
+
+            //Assert
+            
+            Assert.That(ex.Message, Is.EqualTo("Invalid number. Værdien b skal være forskellig fra 0"));
+
+        }
+
     }
 }
