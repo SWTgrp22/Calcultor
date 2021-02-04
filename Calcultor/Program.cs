@@ -10,6 +10,7 @@ namespace Calcultor
 
             //Hej freja
             //går det godt?
+            //her går det fint
         }
     }
 }
