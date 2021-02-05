@@ -9,35 +9,48 @@ namespace Calcultor
         public double accumulator { get; private set; }
         public double Add(double a, double b)
         {
-            return a + b;
+            accumulator = a + b;
+
+            return accumulator;
         }
 
         public double Subtract(double a, double b)
         {
-            return a - b;
+            accumulator = a - b;
+
+            return accumulator;
         }
 
         public double Multiply(double a, double b)
         {
-            return a * b;
+            accumulator = a * b;
+
+            return accumulator;
         }
 
         public double Power(double x, double exp)
         {
-            return Math.Pow(x, exp);
+            accumulator = Math.Pow(x, exp);
+            return accumulator;
         }
 
         public double Divide(double a, double b)
         {
-            if (b != 0) 
+            if (b != 0)
             {
-                return a / b;
+                accumulator = a / b;
+                return accumulator;
             }
             else
             {
                 throw new ArgumentException("Invalid number. Værdien b skal være forskellig fra 0");
             }
 
+        }
+
+        public void Clear()
+        {
+            accumulator = 0;
         }
     }
 }

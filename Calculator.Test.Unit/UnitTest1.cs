@@ -22,10 +22,11 @@ namespace Calculator.Test.Unit
             //Arrange
 
             //Act
-            double sum = uut.Add(a, b);
+            //double sum = uut.Add(a, b); -> før accumulator
+            uut.Add(a, b);
 
             //Assert
-            Assert.That(sum, Is.EqualTo(result));
+            Assert.That(uut.accumulator, Is.EqualTo(result));
 
         }
 
@@ -39,10 +40,11 @@ namespace Calculator.Test.Unit
             //Arrange
 
             //Act
-            double sum = uut.Subtract(a, b);
+            //double sum = uut.Subtract(a, b); -> før accumulator
+            uut.Subtract(a, b);
 
             //Assert
-            Assert.That(sum, Is.EqualTo(result).Within(0.01));
+            Assert.That(uut.accumulator, Is.EqualTo(result).Within(0.01));
 
         }
 
@@ -56,10 +58,11 @@ namespace Calculator.Test.Unit
             //Arrange
 
             //Act
-            double sum = uut.Multiply(a, b);
+            //double sum = uut.Multiply(a, b);-> før accumulator
+            uut.Multiply(a, b);
 
             //Assert
-            Assert.That(sum, Is.EqualTo(result));
+            Assert.That(uut.accumulator, Is.EqualTo(result));
 
         }
 
@@ -72,10 +75,11 @@ namespace Calculator.Test.Unit
             //Arrange
 
             //Act
-            double sum = uut.Power(x, exp);
+            //double sum = uut.Power(x, exp);-> før accumulator
+            uut.Power(x, exp);
 
             //Assert
-            Assert.That(sum, Is.EqualTo(result).Within(0.1));
+            Assert.That(uut.accumulator, Is.EqualTo(result).Within(0.1));
 
         }
 
@@ -88,10 +92,11 @@ namespace Calculator.Test.Unit
             //Arrange
 
             //Act
-            double sum = uut.Divide(a,b);
+            //double sum = uut.Divide(a,b); -> før accumulator
+            uut.Divide(a, b);
 
             //Assert
-            Assert.That(sum, Is.EqualTo(result).Within(0.0001));
+            Assert.That(uut.accumulator, Is.EqualTo(result).Within(0.0001));
 
         }
 
@@ -109,6 +114,19 @@ namespace Calculator.Test.Unit
             
             Assert.That(ex.Message, Is.EqualTo("Invalid number. Værdien b skal være forskellig fra 0"));
 
+        }
+
+        [Test]
+        public void Clear_accumulatorIsEqualto0()
+        {
+            //Arrange
+
+            //Act
+            uut.Add(4, 4);
+            uut.Clear();
+
+            //Assert
+            Assert.That(uut.accumulator,Is.EqualTo(0));
         }
 
     }
