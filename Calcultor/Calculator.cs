@@ -43,6 +43,7 @@ namespace Calcultor
             }
             else
             {
+                accumulator = 0;
                 throw new ArgumentException("Invalid number. Værdien b skal være forskellig fra 0");
             }
 
@@ -50,7 +51,12 @@ namespace Calcultor
 
         public void Clear()
         {
-            accumulator = 0;
+            if (accumulator != 0)
+            {
+                accumulator = 0;
+            }
+
+            
         }
     }
 }

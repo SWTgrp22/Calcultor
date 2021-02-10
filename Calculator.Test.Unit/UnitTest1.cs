@@ -117,7 +117,7 @@ namespace Calculator.Test.Unit
         }
 
         [Test]
-        public void Clear_accumulatorIsEqualto0()
+        public void Clear_Add_accumulatorIsEqualto0()
         {
             //Arrange
 
@@ -127,6 +127,58 @@ namespace Calculator.Test.Unit
 
             //Assert
             Assert.That(uut.accumulator,Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Clear_Subtract_accumulatorIsEqualto0()
+        {
+            //Arrange
+
+            //Act
+            uut.Subtract(4, 4);
+            uut.Clear();
+
+            //Assert
+            Assert.That(uut.accumulator, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Clear_Multiply_accumulatorIsEqualto0()
+        {
+            //Arrange
+
+            //Act
+            uut.Multiply(4, 4);
+            uut.Clear();
+
+            //Assert
+            Assert.That(uut.accumulator, Is.EqualTo(0));
+        }
+        [Test]
+        public void Clear_Power_accumulatorIsEqualto0()
+        {
+            //Arrange
+
+            //Act
+            uut.Power(4, 4);
+            uut.Clear();
+
+            //Assert
+            Assert.That(uut.accumulator, Is.EqualTo(0));
+        }
+
+        [TestCase(4,4)]
+       // [TestCase(4,0)]
+        public void Clear_Divide_accumulatorIsEqualto0(double a, double b)
+        {
+            //Arrange
+
+            //Act
+            uut.Divide(a, b);
+            uut.Clear();
+
+            //Assert
+            Assert.That(uut.accumulator, Is.EqualTo(0));
         }
 
     }
