@@ -107,13 +107,19 @@ namespace Calculator.Test.Unit
         {
             //Arrange
 
-            //Act
-            var ex = Assert.Throws<ArgumentException>(() => uut.Divide(a, b));
+            //Act + Assert
+            Assert.That(()=> uut.Divide(a, b),Throws.TypeOf<ArgumentException>());
+        }
 
-            //Assert
-            
-            Assert.That(ex.Message, Is.EqualTo("Invalid number. Værdien b skal være forskellig fra 0"));
+        [TestCase(4, 0)]
+        [TestCase(7, 0)]
+        [TestCase(4.2, 0)]
+        public void Divide_aDivedBy0_AccumulatorIsEqualTo0(double a, double b)
+        {
+            //Arrange
 
+            //Act + Assert
+            Assert.That(uut.accumulator, Is.EqualTo(0));
         }
 
         [Test]
@@ -168,13 +174,21 @@ namespace Calculator.Test.Unit
         }
 
         [TestCase(4,4)]
-       // [TestCase(4,0)]
+        [TestCase(4,0)]
         public void Clear_Divide_accumulatorIsEqualto0(double a, double b)
         {
             //Arrange
 
             //Act
-            uut.Divide(a, b);
+            try
+            {
+                uut.Divide(a, b);
+
+            }
+            catch (Exception e)
+            {
+                
+            }
             uut.Clear();
 
             //Assert

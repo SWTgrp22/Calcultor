@@ -39,7 +39,6 @@ namespace Calcultor
             if (b != 0)
             {
                 accumulator = a / b;
-                return accumulator;
             }
             else
             {
@@ -47,16 +46,12 @@ namespace Calcultor
                 throw new ArgumentException("Invalid number. Værdien b skal være forskellig fra 0");
             }
 
+            return accumulator;
         }
 
         public void Clear()
         {
-            if (accumulator != 0)
-            {
-                accumulator = 0;
-            }
-
-            
+            accumulator = 0;
         }
     }
 }
